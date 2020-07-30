@@ -1,38 +1,39 @@
-<!--  -->
+
+<!-- 首页内容左边的导航条 -->
 <template>
-  <div class>
-    <!-- 首页header的开始 -->
-    <div class="tt-home-header">
-      <span>头条</span>
-    </div>
-    <!-- 首页header的结束 -->
-
-    <!-- 首页内容content的开始 -->
-    <div class="tt-home-content">
-      <div class="home-content-left">
-        <!-- 插入导航组件 -->
-        <Navleft></Navleft>
-      </div>
-      <div class="home-content-mid">中间</div>
-      <div class="home-content-right">右边</div>
-    </div>
-    <!-- 首页内容content的结束 -->
-
+  <div class="app-home-nav">
+      <h1>头条</h1>
+      <section 
+      v-for='item,index in navs' :key='item.id'
+      class="nav-item">{{ item.text }}</section>
   </div>
 </template>
 
 <script>
 //这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 //例如：import 《组件名称》 from '《组件路径》';
-import Navleft from '../components/Navleft'
+
 export default {
   //import引入的组件需要注入到对象中才能使用
-  components: {
-    Navleft
-  },
+  components: {},
   data() {
     //这里存放数据
-    return {};
+    return {
+      navs:[
+        {id:1,text:"推荐"},
+        {id:2,text:"西瓜视频"},
+        {id:3,text:"财经"},
+        {id:4,text:"热点"},
+        {id:5,text:"直播"},
+        {id:6,text:"图片"},
+        {id:7,text:"科技"},
+        {id:8,text:"娱乐"},
+        {id:9,text:"热点"},
+        {id:10,text:"互动"},
+        {id:11,text:"游戏"},
+        {id:12,text:"航空"},
+      ]
+    };
   },
   //监听属性 类似于data概念
   computed: {},
@@ -53,34 +54,27 @@ export default {
   activated() {} //如果页面有keep-alive缓存功能，这个函数会触发
 };
 </script>
-
 <style lang='less' scoped>
-.tt-home-header {
-  background-color: black;
-  height: 30px;
-  line-height: 30px;
-  padding-left: 10px;
-  span {
-    color: white;
+.app-home-nav {
+  text-align: center;
+  h1 {
+    height: 30px;
+    line-height: 30px;
+    color: #f95242;
+    font-size: 16px;
+    font-weight: 400;
   }
-}
-.tt-home-content {
-  display: flex;
-  width: 80vw;
-  margin: 0 10vw;
-  .home-content-left {
-    flex: 1;
-  } 
-
-  .home-content-mid {
-    flex: 3;
-  }
-
-  .home-content-right {
-    flex: 2;
-
+  section.nav-item {
+    line-height: 40px;
+    height: 40px;
+    font-size: 14px;
+    transition: all .2s;
+    &:hover{
+      cursor: pointer;
+      color: white;
+      background: #f95242;
+      border-radius: 10px;
+    }
   }
 }
 </style>
-
-
